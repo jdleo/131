@@ -24,9 +24,6 @@ public class WeightedTotalStrategy implements GradingStrategy {
 			double weightedTotalMax = 0;
 			double weightedTotalActual = 0;
 			
-			//initialize Missing object
-			Missing missing = new Missing();
-			
 			//iterate over grades list
 			for (Grade grade : grades) {
 				double weight = 1.0;
@@ -42,7 +39,7 @@ public class WeightedTotalStrategy implements GradingStrategy {
 				}
 				
 				//handle missing values with Missing utility
-				double gradeValue = missing.doubleValue(grade.getValue());
+				double gradeValue = Missing.doubleValue(grade.getValue());
 				
 				//add to running totals
 				weightedTotalMax += (100.0 * weight);
