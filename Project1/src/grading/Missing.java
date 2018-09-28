@@ -2,14 +2,14 @@ package grading;
 
 public class Missing {
 	//default missing value constant
-	public final double DEFAULT_MISSING_VALUE = 0;
+	public static final double DEFAULT_MISSING_VALUE = 0;
 	
 	/**
 	 * Method to check for missing value
 	 * @param number
 	 * @return double
 	 */
-	public double doubleValue(Double number) {
+	public static double doubleValue(Double number) {
 		if (number == null) {
 			return DEFAULT_MISSING_VALUE;
 		} else {
@@ -23,7 +23,7 @@ public class Missing {
 	 * @param missingValue
 	 * @return double
 	 */
-	public double doubleValue(Double number, double missingValue) {
+	public static double doubleValue(Double number, double missingValue) {
 		if (number == null) {
 			return missingValue;
 		} else {
