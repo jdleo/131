@@ -1,5 +1,4 @@
 package grading;
-import grading.Grade;
 import java.util.List;
 
 public interface GradingStrategy {
