@@ -1,5 +1,6 @@
 package grading;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class DropFilter implements Filter {
@@ -53,22 +54,38 @@ public class DropFilter implements Filter {
 			throw new SizeException("List of grades cannot be equal to number to be dropped.");
 		} else {
 			
+			//result list
+			List<Grade> filteredGrades = new ArrayList<Grade>();
+			
 			//sort grades descending
 			List<Grade> sortedGrades = grades;
 			Collections.sort(sortedGrades);
 			
-			//drop highest
-			if (shouldDropHighest) {
-				sortedGrades.remove(0);
-			}
-			
-			//drop lowest
-			if (shouldDropLowest) {
-				sortedGrades.remove(grades.size() - 1);
+			//iterate through sorted grades
+			for (int i = 0; i < sortedGrades.size(); i++) {
+				if (shouldDropHighest && shouldDropLowest) {
+					//skip the highest grade and lowest grade, "drop" them
+					if (i != 0 && i != sortedGrades.size() - 1) {
+						filteredGrades.add(sortedGrades.get(i));
+					}
+				} else if (shouldDropHighest) {
+					//skip the highest grade, "drop" it
+					if (i != 0) {
+						filteredGrades.add(sortedGrades.get(i));
+					}
+				} else if (shouldDropLowest) {
+					//skip the lowest grade, "drop" it
+					if (i != sortedGrades.size() - 1) {
+						filteredGrades.add(sortedGrades.get(i));
+					}
+				} else {
+					//copy everything over
+					filteredGrades.add(sortedGrades.get(i));
+				}
 			}
 			
 			//return result
-			return sortedGrades;
+			return filteredGrades;
 			
 		}
 	}
