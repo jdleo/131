@@ -23,7 +23,7 @@ public class TotalStrategy implements GradingStrategy {
 			//iterate over grades list
 			for (Grade grade : grades) {
 				//add to running total
-				runningTotal += grade.getValue();
+				runningTotal += Missing.doubleValue(grade.getValue());
 			}
 			
 			//return result grade
