@@ -48,8 +48,8 @@ class DropFilter_Tests {
 			
 			//20 should be dropped (lowest) and 95 should be dropped (highest)
 			//so if this works, new lowest should be 40, and new highest should be 80
-			assertEquals(filteredList.get(0).getValue(), 40.0, 0.0001);
-			assertEquals(filteredList.get(3).getValue(), 80.0, 0.0001);
+			assertEquals(40.0, filteredList.get(0).getValue(), 0.0001);
+			assertEquals(80.0, filteredList.get(3).getValue(), 0.0001);
 			
 		} catch (SizeException e) {
 			fail("SizeException should not be thrown here.");

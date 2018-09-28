@@ -20,9 +20,8 @@ public class WeightedTotalStrategy implements GradingStrategy {
 		} else if (grades.isEmpty()) {
 			throw new SizeException("List of grades cannot be empty.");
 		} else {
-			//to keep track of running totals
-			double weightedTotalMax = 0;
-			double weightedTotalActual = 0;
+			//to keep track of running total
+			double runningTotal = 0;
 			
 			//iterate over grades list
 			for (Grade grade : grades) {
@@ -42,14 +41,10 @@ public class WeightedTotalStrategy implements GradingStrategy {
 				double gradeValue = Missing.doubleValue(grade.getValue());
 				
 				//add to running totals
-				weightedTotalMax += (100.0 * weight);
-				weightedTotalActual += (gradeValue * weight);
+				runningTotal += (gradeValue * weight);
 			}
 			
-			//calculate final weighted grade
-			double finalGradeValue = 100.0 * (weightedTotalActual / weightedTotalMax);
-			
-			return new Grade(key, finalGradeValue);
+			return new Grade(key, runningTotal);
 		}
 	}
 

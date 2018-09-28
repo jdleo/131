@@ -18,20 +18,16 @@ public class TotalStrategy implements GradingStrategy {
 			throw new SizeException("List of grades cannot be empty.");
 		} else {
 			//to keep track of running total
-			double runningTotal = 0;
+			double runningTotal = 0.0;
 			
 			//iterate over grades list
 			for (Grade grade : grades) {
-				
 				//add to running total
 				runningTotal += grade.getValue();
 			}
 			
-			//calculate final grade (average)
-			double finalGradeValue = runningTotal / grades.size();
-			
 			//return result grade
-			return new Grade(key, finalGradeValue);
+			return new Grade(key, runningTotal);
 		}
 	}
 }

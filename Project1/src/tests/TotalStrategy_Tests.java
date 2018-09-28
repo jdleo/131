@@ -32,9 +32,9 @@ class TotalStrategy_Tests {
 		try {
 			Grade tester = strat.calculate("test", list);
 			double testGrade = tester.getValue();
-			//final grade with given list should be 79.75 (638 total points / 8 size of array)
+			//final grade with given list should be 638 total points
 			//allow 0.0001 epsilon due to lack of precision with double values
-			assertEquals(testGrade, 79.75, 0.0001);
+			assertEquals(638, testGrade, 0.0001);
 			
 		} catch (SizeException e) {
 			fail("SizeException should not be thrown here.");

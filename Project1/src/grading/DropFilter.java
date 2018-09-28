@@ -70,12 +70,12 @@ public class DropFilter implements Filter {
 					}
 				} else if (shouldDropHighest) {
 					//skip the highest grade, "drop" it
-					if (i != 0) {
+					if (i != sortedGrades.size() - 1) {
 						filteredGrades.add(sortedGrades.get(i));
 					}
 				} else if (shouldDropLowest) {
 					//skip the lowest grade, "drop" it
-					if (i != sortedGrades.size() - 1) {
+					if (i != 0) {
 						filteredGrades.add(sortedGrades.get(i));
 					}
 				} else {
